@@ -67,7 +67,7 @@
                 $j = $i +1;
             }
         @endphp
-
+{{ $beneficiaries[$i]->b_id }}
             <tr>
                 <td>{{$j}}</td>
                 <!-- <td>{{$beneficiaries[$i]->record_id}}</td> -->
