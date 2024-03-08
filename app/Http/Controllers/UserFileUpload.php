@@ -25,7 +25,7 @@ class UserFileUpload extends Controller
                 'image_location_1' => $temp_1,
                 'image_location_2' => $temp_2,
             ]);
-            DB::table('beneficary_mapping')->where('id', $user_id)->update(['status' => '1']);
+            DB::table('beneficary_details_excel_data')->where('id', $user_id)->update(['status' => '1']);
             return response()->json(['status' => 200, 'message' => 'Files Are Uploaded', "user_id" => $user_id]);
         } else {
             return response()->json(['status' => 400, 'message' => 'Select All Files', "user_id" => $user_id]);
