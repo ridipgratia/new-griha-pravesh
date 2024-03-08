@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="row justify-content-center">
                 <div class="col-md-5 table-responsive" style="max-height: 120vh;">
-                  <table class="table table-striped" style="height:80vh;overflow:scroll">
+                  <table class="table table-striped" style="overflow:scroll">
                     <tr class="bg-primary">
                         <td><strong class="text-white h5">District</td></strong>
                         <td><strong class="text-white h5">Completed</td></strong>

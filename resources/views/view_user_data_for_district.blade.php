@@ -92,7 +92,7 @@ img.zoom-img {
                 <!-- <td>Record Id</td> -->
                 <td>Beneficiary ID</td>
                 <td>Beneficiary Name</td>
-                <td>Village Name</td>
+                <!-- <td>Village Name</td> -->
                 <td>GP</td>
                 <td>Block</td>
                 <td>District</td>
@@ -118,7 +118,7 @@ img.zoom-img {
                 <!-- <td>{{$beneficiaries[$i]->record_id}}</td> -->
                 <td>{{$beneficiaries[$i]->b_id}}</td>
                 <td>{{$beneficiaries[$i]->b_name}}</td>
-                <td>{{$beneficiaries[$i]->village}}</td>
+                <!--<td>{{$beneficiaries[$i]->village}}</td> -->
                 <td>{{$beneficiaries[$i]->gp_name}}</td>
                 <td>{{$beneficiaries[$i]->block_name}}</td>
                 <td>{{$beneficiaries[$i]->district_name}}</td>
@@ -129,21 +129,6 @@ img.zoom-img {
         @endphp
             
         </tbody>
-        <tfoot>
-            <tr>
-                <td>SL No</td>
-                <!-- <td>Record Id</td> -->
-                <td>Beneficiary ID</td>
-                <td>Beneficiary Name</td>
-                <td>Village Name</td>
-                <td>GP</td>
-                <td>Block</td>
-                <td>District</td>
-                <!-- <td>Photo 1</td>
-                <td>Photo 2</td> -->
-                <td>View Details</td>
-            </tr>
-        </tfoot>
     </table>
     </div>
     </div>

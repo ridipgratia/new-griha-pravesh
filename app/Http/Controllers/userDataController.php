@@ -255,14 +255,15 @@ class UserDataController extends Controller
 
 
 
-        $beneficiaries = DB::table('beneficary_mapping')
-            ->join('vill_name', 'beneficary_mapping.village_id', '=', 'vill_name.id')
-            ->join('gp_name', 'beneficary_mapping.gp_id', '=', 'gp_name.id')
-            ->join('block_name', 'beneficary_mapping.block_id', '=', 'block_name.id')
-            ->join('districts', 'beneficary_mapping.district_id', '=', 'districts.id')
-            ->where('beneficary_mapping.district_id', $district_code)
-            ->where('beneficary_mapping.status', '1')
-            ->select('beneficary_mapping.id as record_id', 'beneficary_mapping.name as b_name', 'beneficary_mapping.reg_no as b_id', 'beneficary_mapping.lat as lat', 'beneficary_mapping.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name', 'vill_name.name as village')
+        $beneficiaries = DB::table('beneficary_details_excel_data')
+
+            ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
+            ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
+            ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id')
+            ->leftjoin('vill_name', 'beneficary_details_excel_data.village_id', '=', 'vill_name.id')
+            ->where('beneficary_details_excel_data.district_id', $district_code)
+            ->where('beneficary_details_excel_data.status', '1')
+            ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name', 'vill_name.name as village')
             ->get();
 
         // dd($beneficiaries);
