@@ -405,9 +405,7 @@
         }
 
         .main-content {
-            /* background-image: url('/images/pmay2.webp'); */
-            background-size: cover;
-            background-repeat: no-repeat;
+            position: relative;
         }
 
         .sign-in {
@@ -457,24 +455,30 @@
         }
 
         .blank {
+            background-image: url('/images/pmayg.jpeg');
+            background-size: cover;
+            width: 100%;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            /* position: absolute; */
             height: 100vh;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
 
         }
 
-        .footer {
-            /* position: absolute; */
-            /* bottom: 1px; */
+        .footer-div {
             width: 100%;
-            text-align: center;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: rgb(61, 59, 59);
             color: white;
-            padding: 0px 30px;
-            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-
         }
     </style>
 </head>
@@ -503,9 +507,8 @@
             </div>
         </div>
         <div class="blank">
-            Background image
         </div>
-        <div class="footer">
+        <div class="footer-div">
             <h2>Designed & Developed By - Gratia Technology</h2>
         </div>
     </div>
