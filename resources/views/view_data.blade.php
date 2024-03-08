@@ -92,7 +92,7 @@ img.zoom-img {
                 <!-- <td>Record Id</td> -->
                 <td>Beneficiary ID</td>
                 <td>Beneficiary Name</td>
-                <td>Village Name</td>
+                
                 <td>GP</td>
                 <td>Block</td>
                 <!-- <td>District</td> -->
@@ -118,7 +118,7 @@ img.zoom-img {
                 <!-- <td>{{$beneficiaries[$i]->record_id}}</td> -->
                 <td>{{$beneficiaries[$i]->b_id}}</td>
                 <td>{{$beneficiaries[$i]->b_name}}</td>
-                <td>{{$beneficiaries[$i]->village}}</td>
+
                 <td>{{$beneficiaries[$i]->gp_name}}</td>
                 <td>{{$beneficiaries[$i]->block_name}}</td>
                 <!-- <td><img src="{{ Storage::url($beneficiaries[$i]->photo1) }}" style="width:50px;height:50px"/></td>
@@ -136,7 +136,7 @@ img.zoom-img {
                 <!-- <td>Record Id</td> -->
                 <td>Beneficiary ID</td>
                 <td>Beneficiary Name</td>
-                <td>Village Name</td>
+
                 <td>GP</td>
                 <td>Block</td>
                 <!-- <td>District</td> -->
