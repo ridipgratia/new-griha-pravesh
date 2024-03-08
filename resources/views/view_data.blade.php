@@ -121,8 +121,6 @@ img.zoom-img {
 
                 <td>{{$beneficiaries[$i]->gp_name}}</td>
                 <td>{{$beneficiaries[$i]->block_name}}</td>
-                <!-- <td><img src="{{ Storage::url($beneficiaries[$i]->photo1) }}" style="width:50px;height:50px"/></td>
-                <td><img src="{{ Storage::url($beneficiaries[$i]->photo2) }}" style="width:50px;height:50px"/></td> -->
                 <td><a href="#" onclick="uploadModal({{$beneficiaries[$i]->record_id}})"><i class="fa fa-eye"></i></a></td>
             </tr>
         @php

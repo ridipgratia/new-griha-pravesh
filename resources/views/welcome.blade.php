@@ -400,27 +400,110 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
+            height: 100vh;
+
+        }
+
+        .main-content {
+            background-image: url('/images/pmay2.webp');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .sign-in {
+            position: absolute;
+            background-color: black;
+            right: 10px;
+            top: 3rem;
+        }
+
+        .login-btn {
+            bottom: 0px;
+            color: rgb(255, 255, 255);
+            border: 1px solid blue;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background-color: blue;
+
+
+        }
+
+        .dashboard {
+            bottom: 0px;
+            color: rgb(255, 255, 255);
+            border: 1px solid blue;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background-color: blue;
+
+        }
+
+        .dashboard:hover {
+            color: rgb(255, 255, 255);
+            background-color: rgb(31, 153, 31);
+        }
+
+        .login-btn:hover {
+            color: rgb(255, 255, 255);
+            background-color: rgb(31, 153, 31);
+        }
+
+        .nav {
+            color: rgb(255, 255, 255);
+            padding: .5rem;
+            /* text-transform: uppercase; */
+            background-color: rgb(31, 153, 31);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .blank {
+            position: relative;
+            height: 100vh;
+
+        }
+
+        .footer {
+            /* position: absolute; */
+            /* bottom: 1px; */
+            width: 100%;
+            text-align: center;
+            background-color: rgb(61, 59, 59);
+            color: white;
+            padding: 0px 30px;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+
         }
     </style>
 </head>
 
-<body class="antialiased">
-    <div class="relative flex items-top justify-center min-h-screen bg-light-100 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm dark:text-gray-500 bg-primary text-light">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm dark:text-gray-500 bg-primary text-light">Log in</a>
+<body class="">
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-sm  dark:text-gray-500 b text-light">Register</a>
-                    @endif
-                @endauth
+    <div class="main-content">
+        <div class="nav flex">
+            <img src="/images/govtLogo.png" alt="" height="80" width="80">
+            <h1>PMAY-G Griha-Pravesh</h1>
+            <div class="sign-in">
+                @if (Route::has('login'))
+                    <div class="">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="text-sm dark:text-gray-500 dashboard">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm dark:text-gray-500 login-btn">Log in</a>
+
+                            {{-- @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 text-sm  dark:text-gray-500 b text-light">Register</a>
+                            @endif --}}
+                        @endauth
+                    </div>
+                @endif
+
             </div>
-        @endif
-
-
+        </div>
+        <div class="blank">
+        </div>
+        <div class="footer">
+            <h2>Designed & Developed By - Gratia Technology</h2>
+        </div>
     </div>
 </body>
 
