@@ -107,7 +107,7 @@
         <div class="modal-dialog" style="max-width: 60%;" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Upload Griha Pravesh Photos </h3>
+                    <h3 class="modal-title">Upload Sweet distribution photos </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -136,9 +136,7 @@
                             <td>
                                 <h6>GP Name : <strong><span id="gp_name"></span></strong></h6>
                             </td>
-                            <td>
-                                <h6>Village Name : <strong><span id="village"></span></strong></h6>
-                            </td>
+                            
                         </tr>
                         <h4 class="mb-2">Beneficiary Details</h4>
                     </table>

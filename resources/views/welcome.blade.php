@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>PMAY-G Griha-Pravesh</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -405,7 +405,7 @@
         }
 
         .main-content {
-            background-image: url('/images/pmay2.webp');
+            /* background-image: url('/images/pmay2.webp'); */
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -457,6 +457,9 @@
         }
 
         .blank {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
             height: 100vh;
 
@@ -500,6 +503,7 @@
             </div>
         </div>
         <div class="blank">
+            Background image
         </div>
         <div class="footer">
             <h2>Designed & Developed By - Gratia Technology</h2>

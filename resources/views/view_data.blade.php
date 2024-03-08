@@ -183,9 +183,7 @@ img.zoom-img {
                             <td>
                                 <h6>GP Name : <strong><span id="gp_name"></span></strong></h6>
                             </td>
-                            <td>
-                                <h6>Village Name : <strong><span id="village"></span></strong></h6>
-                            </td>
+                            
                         </tr>
                         <h4 class="mb-2">Basic Details</h4>
                     </table>

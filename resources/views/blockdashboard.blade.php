@@ -7,15 +7,15 @@
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <a href="{{ route('viewData') }}">
-                        <div class="card bg-primary text-white"
+                        <div class="card bg-primary text-white shadow"
                             style="aspact-ratio:1; height:200px;display:flex;justify-content:center;align-items:center">
-                            <h1 class="display-4">Show data 1</h1>
+                            <h1 class="display-4">Show data</h1>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-4">
                     <a href="{{ route('uploadPhoto') }}">
-                        <div class="card bg-success text-white"
+                        <div class="card bg-success text-white shadow"
                             style="aspact-ratio:1; height:200px;display:flex;justify-content:center;align-items:center">
                             <h1 class="display-4">Upload Photo</h1>
                         </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-4">
                     <a href="/upload-excel">
-                        <div class="card bg-primary text-white"
+                        <div class="card bg-primary text-white shadow"
                             style="aspact-ratio:1; height:200px;display:flex;justify-content:center;align-items:center">
                             <h1 class="display-4">Upload Excel</h1>
                         </div>
