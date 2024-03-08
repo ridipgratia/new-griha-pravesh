@@ -13,12 +13,12 @@ class UserDataController extends Controller
     public function findUserdataOne(Request $request)
     {
         $beneficiary = DB::table('beneficary_details_excel_data')
-            ->join('vill_name', 'beneficary_details_excel_data.village_id', '=', 'vill_name.id')
+
             ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
             ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
             ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id')
             ->where('beneficary_details_excel_data.id', $request->id)
-            ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name', 'vill_name.name as village')
+            ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name',)
             ->first();
         return json_encode($beneficiary);
     }
@@ -26,13 +26,13 @@ class UserDataController extends Controller
     public function findUserdataOneview(Request $request)
     {
         $beneficiary = DB::table('beneficary_details_excel_data')
-            ->join('vill_name', 'beneficary_details_excel_data.village_id', '=', 'vill_name.id')
+
             ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
             ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
             ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id')
             ->join('user_images', 'beneficary_details_excel_data.id', '=', 'user_images.reg_rec_id')
             ->where('beneficary_details_excel_data.id', $request->id)
-            ->select('user_images.image_location_2 as photo2', 'user_images.image_location_1 as photo1', 'beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name', 'vill_name.name as village')
+            ->select('user_images.image_location_2 as photo2', 'user_images.image_location_1 as photo1', 'beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name',)
             ->first();
         $data = [];
         $x = $beneficiary->photo1;
