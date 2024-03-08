@@ -1,0 +1,121 @@
+.user_data {
+    width: 100%;
+    background: #83c7c4;
+}
+.user_upload_form {
+    width: 100%;
+    background: #335253;
+}
+.user_upload_form p {
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+    width: 30%;
+    color: white;
+}
+.user_upload_form select {
+    width: 20%;
+    font-size: 15px;
+    font-family: "Courier New", Courier, monospace;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+.user_upload_form select option {
+    background: #335253;
+    border-radius: 10px;
+}
+.user_upload_form button {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+.paginate_div {
+    width: 100%;
+    background: #335253;
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    padding: 10px 0px 20px 0px;
+}
+.paginate_div a {
+    color: white;
+    text-decoration: none;
+}
+.paginate_div span {
+    color: grey;
+    text-align: center;
+}
+.user_data_div {
+    width: 100%;
+}
+.user_data_div_1 {
+    width: 100%;
+    background: #255bcd;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: white;
+}
+.user_data_div_1 p {
+    width: 12%;
+    text-align: center;
+}
+
+.user_data_div_2 {
+    width: 100%;
+    background: #0e2c6f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Courier New", Courier, monospace;
+}
+.user_data_div_2:hover {
+    background: linear-gradient(rgba(14, 44, 111, 0.8), rgba(14, 44, 111, 0.8));
+}
+.user_data_div_2 p {
+    width: 12%;
+    text-align: center;
+}
+.user_data_div_2 a {
+    width: 12%;
+    text-align: center;
+    color: white;
+}
+.pmay_form {
+    width: 40%;
+    padding: 10px 0px 10px 0px;
+    background: #335253;
+}
+.pmay_search {
+    width: 60%;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+}
+.pmay_search input {
+    width: 90%;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: white;
+    padding: 5px 0px 5px 0px;
+}
+.pmay_form button {
+    background: #0e2c6f;
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    color: white;
+}

@@ -1,0 +1,47 @@
+.main_div {
+    width: 100%;
+    flex-direction: column;
+    flex-flow: column;
+    height: 100vh;
+    background-color: rgb(44, 59, 72);
+}
+.login_form {
+    width: 50%;
+    flex-direction: column;
+    flex-flow: column;
+    background-color: white;
+}
+.login_form h1 {
+    text-transform: uppercase;
+    color: black;
+    font-size: 23px;
+    font-family: "Courier New", Courier, monospace;
+    margin-top: 20px;
+}
+.login_form input {
+    width: 60%;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
+    margin: 20px 0px 20px 0px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+.login_form button {
+    padding: 5px 20px 5px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    background: rgb(16, 16, 145);
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 20px;
+}
+.main_div p {
+    font-size: 17px;
+    color: red;
+    font-family: "Courier New", Courier, monospace;
+}

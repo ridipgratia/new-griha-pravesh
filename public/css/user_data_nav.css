@@ -1,0 +1,16 @@
+.user_data_nav {
+    width: 100%;
+    background: #9bd2e0;
+    padding: 10px 0px 10px 0px;
+}
+
+.user_data_nav a {
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: white;
+    background-color: blue;
+    border: none;
+    padding: 5px 20px 5px 20px;
+    text-decoration: none;
+}

@@ -1,0 +1,52 @@
+body {
+    background-color: #6787ca;
+}
+.user_display_div {
+    width: 100%;
+}
+.user_dis_div {
+    width: 100%;
+    background: #255bcd;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: white;
+}
+.user_dis_div p {
+    width: 16%;
+    text-align: center;
+}
+.user_dis_div_1 {
+    width: 100%;
+    background: #0e2c6f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Courier New", Courier, monospace;
+}
+.user_dis_div_1 p {
+    text-align: center;
+    width: 16%;
+}
+.user_dis_img {
+    width: 100%;
+}
+.user_dis_img img {
+    width: 30%;
+    height: 300px;
+    margin-top: 20px;
+    border: 1px solid grey;
+    box-shadow: 7px 7px 7px black;
+}
+.user_add_more {
+    width: 100%;
+    background-color: transparent;
+}
+.user_add_more a {
+    cursor: pointer;
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+    margin-top: 30px;
+    background-color: #0e2c6f;
+    color: white;
+}

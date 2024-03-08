@@ -1,0 +1,67 @@
+body {
+    background-color: #6787ca;
+}
+.file_upload_div {
+    width: 100%;
+}
+.file_upload_form {
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    margin-top: 10px;
+}
+.upload_div {
+    width: 30%;
+    background: #253a6d;
+    height: 300px;
+    box-shadow: 7px 7px 7px black;
+}
+.upload_div img {
+    width: 90%;
+    height: 230px;
+    border: 1px solid white;
+}
+.upload_div input {
+    width: 80%;
+    background-color: transparent;
+    border: 1px solid white;
+    margin-top: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+}
+.upload_div input::-webkit-file-upload-button {
+    background: transparent;
+    cursor: pointer;
+    font-size: 17px;
+    color: white;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+}
+.upload_div_2 {
+    width: 100%;
+    margin-top: 20px;
+}
+.upload_div_2 button {
+    background-color: blue;
+    padding: 5px 20px 5px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+    color: white;
+    font-weight: bold;
+}
+.view_form {
+    width: 100%;
+}
+.view_form button {
+    background-color: #253a6d;
+    padding: 5px 20px 5px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    color: white;
+    cursor: pointer;
+}
