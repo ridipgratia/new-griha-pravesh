@@ -9,7 +9,7 @@
             @csrf
             <div class="d-flex flex-wrap col-12 justify-content-center main-select-header gap-2">
                 <div class="d-flex flex-wrap col-md-3 col-5 select-header-div">
-                    <p class="col-12">District Code</p>
+                    <p class="col-12">District Name</p>
                     <select name="district_code" id="" class="col-12">
                         <option value="">{{ $district_name }}</option>
                     </select>
