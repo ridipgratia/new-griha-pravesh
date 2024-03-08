@@ -148,11 +148,11 @@ class UserDataController extends Controller
     public function viewdata(Request $request)
     {
         $page_id = $request->page;
-        $ses_gp_code = $request->session()->get('gp_code');
-        $gp_code = $ses_gp_code;
+
         $x = Auth::user();
         $district_code = $x->district_code;
         $district = DB::table('districts')->where('id', $district_code)->first();
+        $gp_code = $request->GP_name; // requested by user
 
         $district_name = $district->name;
         $block_code = $x->block_code;
@@ -172,16 +172,17 @@ class UserDataController extends Controller
         if (!isset($ses_gp_code)) {
             $ses_gp_code = $gps[0]->gp_id;
         }
-        $beneficiaries = DB::table('beneficary_mapping')
-            ->join('vill_name', 'beneficary_mapping.village_id', '=', 'vill_name.id')
-            ->join('gp_name', 'beneficary_mapping.gp_id', '=', 'gp_name.id')
-            ->join('block_name', 'beneficary_mapping.block_id', '=', 'block_name.id')
-            ->join('districts', 'beneficary_mapping.district_id', '=', 'districts.id')
-            ->join('user_images', 'beneficary_mapping.id', '=', 'user_images.reg_rec_id')
-            ->where('beneficary_mapping.block_id', $block_code)
-            ->where('beneficary_mapping.gp_id', $ses_gp_code)
-            ->where('beneficary_mapping.status', '1')
-            ->select('user_images.image_location_2 as photo2', 'user_images.image_location_1 as photo1', 'beneficary_mapping.id as record_id', 'beneficary_mapping.name as b_name', 'beneficary_mapping.reg_no as b_id', 'beneficary_mapping.lat as lat', 'beneficary_mapping.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name', 'vill_name.name as village')
+        $query = DB::table('beneficary_details_excel_data')
+            ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
+            ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
+            ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id')
+            ->where('beneficary_details_excel_data.block_id', $block_code);
+        if (isset($request->GP_name)) {
+            $query->where('beneficary_details_excel_data.gp_id', $request->GP_name);
+        }
+        $beneficiaries = $query->where('beneficary_details_excel_data.status', '1')
+            ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name')
+            // ->simplePaginate(15);
             ->get();
         return view('view_data', compact('district', 'block', 'gps', 'beneficiaries', 'gp_code', 'page_id'));
     }
@@ -198,7 +199,7 @@ class UserDataController extends Controller
         } else {
             $page_id = $request->page;
             $gp_code = $request->GP_name; // requested by user
-            $request->session()->put('gp_code', $gp_code);
+
             $x = Auth::user();
             $district_code = $x->district_code;
             $district = DB::table('districts')->where('id', $district_code)->first();
@@ -218,16 +219,17 @@ class UserDataController extends Controller
                 ->where('district_id', $district_code)
                 ->get();
 
-            $beneficiaries = DB::table('beneficary_mapping')
-                ->join('vill_name', 'beneficary_mapping.village_id', '=', 'vill_name.id')
-                ->join('gp_name', 'beneficary_mapping.gp_id', '=', 'gp_name.id')
-                ->join('block_name', 'beneficary_mapping.block_id', '=', 'block_name.id')
-                ->join('districts', 'beneficary_mapping.district_id', '=', 'districts.id')
-                ->join('user_images', 'beneficary_mapping.id', '=', 'user_images.reg_rec_id')
-                ->where('beneficary_mapping.block_id', $block_code)
-                ->where('beneficary_mapping.gp_id', $gp_code)
-                ->where('beneficary_mapping.status', '1')
-                ->select('user_images.image_location_2 as photo2', 'user_images.image_location_1 as photo1', 'beneficary_mapping.id as record_id', 'beneficary_mapping.name as b_name', 'beneficary_mapping.reg_no as b_id', 'beneficary_mapping.lat as lat', 'beneficary_mapping.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name', 'vill_name.name as village')
+            $query = DB::table('beneficary_details_excel_data')
+                ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
+                ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
+                ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id')
+                ->where('beneficary_details_excel_data.block_id', $block_code);
+            if (isset($request->GP_name)) {
+                $query->where('beneficary_details_excel_data.gp_id', $request->GP_name);
+            }
+            $beneficiaries = $query->where('beneficary_details_excel_data.status', '1')
+                ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name')
+                // ->simplePaginate(15);
                 ->get();
 
             // dd($beneficiaries);
