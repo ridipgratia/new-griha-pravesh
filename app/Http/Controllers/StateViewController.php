@@ -65,9 +65,9 @@ class StateViewController extends Controller
                     $b = Storage::url($y);
                     $beneficiary->p1 = $a;
                     $beneficiary->p2 = $b;
-                    return response()->json(['status' => 400, 'details' => $beneficiary]);
+                    return response()->json(['status' => 400, 'one_details' => $beneficiary]);
                 } catch (Exception $err) {
-                    $message = "Server error please try again !!! !";
+                    $message = "Server error please try again !";
                 }
             } else {
                 $message = "You are not authrozied !";
