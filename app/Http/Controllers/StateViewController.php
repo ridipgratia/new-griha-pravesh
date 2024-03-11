@@ -83,6 +83,7 @@ class StateViewController extends Controller
         // dd($dist);
 
         $dist_code = DB::table('districts')->select('id')->get();
+        $block_code = DB::table('blocks')->select('id')->get();
 
         return view('dist_show_data', compact('dist'));
     }
