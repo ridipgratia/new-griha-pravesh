@@ -67,7 +67,7 @@ class StateViewController extends Controller
                     $beneficiary->p2 = $b;
                     return response()->json(['status' => 400, 'details' => $beneficiary]);
                 } catch (Exception $err) {
-                    $message = "Server error please try again !";
+                    $message = "Server error please try again !!! !";
                 }
             } else {
                 $message = "You are not authrozied !";
