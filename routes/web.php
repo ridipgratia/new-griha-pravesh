@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadExcelController;
 use App\Http\Controllers\userDataController;
+use App\Http\Controllers\StateViewController;
 use App\Http\Controllers\UserFileUpload;
 use Illuminate\Support\Facades\Route;
 
@@ -61,4 +62,5 @@ Route::post('user_data_oneview', [userDataController::class, 'findUserdataOnevie
 // Route::middleware([checkdistrict::class])->group(function () {
 Route::get('/viewDatadistrict', [UserDataController::class, 'showUserDatadistrict'])->name('viewDatadistrict');
 Route::post('/view_filtered_data_by_block', [userDataController::class, 'viewfilterUserdatabyBlock'])->name('viewfiltereddatabyblock')->middleware(['auth', 'verified']);
+Route::get('/state_show_all_data', [StateViewController::class, 'showAllData'])->name('showAllData');//(DK)
 // });
