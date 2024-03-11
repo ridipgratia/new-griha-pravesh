@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class StateViewController extends Controller
 {
-<<<<<<< HEAD
+
     public function viewAllUploadData(Request $request)
     {
         if ($request->ajax()) {
@@ -74,17 +74,16 @@ class StateViewController extends Controller
             }
             return response()->json(['status' => $status, 'message' => $message]);
         }
-=======
-
-     // show all data page according to district or block or GP (DK)
-     public function showAllData(){
+    }
+    // show all data page according to district or block or GP (DK)
+    public function showAllData()
+    {
 
         $dist = DB::table('districts')->get();
         // dd($dist);
 
         $dist_code = DB::table('districts')->select('id')->get();
 
-        return view('dist_show_data',compact('dist'));
->>>>>>> bef6daf18d9d2a14fc5abebbe58312312effdbbd
+        return view('dist_show_data', compact('dist'));
     }
 }
