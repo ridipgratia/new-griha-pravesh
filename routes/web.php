@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StateViewController;
 use App\Http\Controllers\UploadExcelController;
 use App\Http\Controllers\userDataController;
 use App\Http\Controllers\UserFileUpload;
@@ -62,3 +63,8 @@ Route::post('user_data_oneview', [userDataController::class, 'findUserdataOnevie
 Route::get('/viewDatadistrict', [UserDataController::class, 'showUserDatadistrict'])->name('viewDatadistrict');
 Route::post('/view_filtered_data_by_block', [userDataController::class, 'viewfilterUserdatabyBlock'])->name('viewfiltereddatabyblock')->middleware(['auth', 'verified']);
 // });
+
+
+// ------------------------ state view routes ---------------------
+// --------------- get all uploaded data ---------------------
+Route::post('/get-state-view', [StateViewController::class, 'viewAllUploadData']);
