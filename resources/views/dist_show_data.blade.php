@@ -63,7 +63,7 @@ img.zoom-img {
                <div class="flex_div user_upload_form py-4" id="filtergp">
                 <div class="col-4 text-center">
                   <h5 class="text-white">District Name :  </h5>
-                  <select name="GP_name" onchange="searchbygp(event)" style="width:50%;margin-left:20px">
+                  <select name="GP_name" style="width:50%;margin-left:20px">
                       <option disabled selected>Select District</option>
                       @foreach($dist as $d)
                       <option id="selectDist" value="{{$d->id}}">{{$d->name}}</option>
@@ -72,14 +72,14 @@ img.zoom-img {
                  </div>
                  <div class="col-4 text-center">
                   <h5 class="text-white">Block Name :  </h5>
-                  <select name="GP_name" onchange="searchbygp(event)" style="width:50%;margin-left:20px">
+                  <select name="GP_name" style="width:50%;margin-left:20px">
                       <option disabled selected>Select Block</option>
                       
                   </select>
                  </div>
                  <div class="col-4 text-center">
                   <h5 class="text-white">GP Name :  </h5>
-                  <select name="GP_name" onchange="searchbygp(event)" style="width:50%;margin-left:20px">
+                  <select name="GP_name" style="width:50%;margin-left:20px">
                       <option disabled selected>Select GP</option>
                    
                   </select>
@@ -285,13 +285,6 @@ img.zoom-img {
                 output.onload = function() {
                     URL.revokeObjectURL(output.src) // free memory
                 }
-            }
-
-            function searchbygp(e){
-                // e.preventDefault();
-                $('#filtergp').submit();
-                // url = getdatabygp
-
             }
 
             new DataTable('#example');
