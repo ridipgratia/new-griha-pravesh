@@ -3,14 +3,14 @@
 
     <!--- put extra css here -->
 @endsection
-  <div class="d-flex border col-12 justify-content-center p-3">
-    <a href="/state_show_all_data" class="p-3 bg-primary text-white">Show Data</a>
-    {{-- <a href="" class="bg-success p-3 text-white border">Show Data</a> --}}
-  </div>
+  
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="row justify-content-center">
                 <div class="col-md-5 table-responsive" style="max-height: 120vh;">
+                  <div class="d-flex border col-12 justify-content-right p-3">
+                    <a href="/state_show_all_data" class="p-2 bg-primary text-white">Show Completed Data</a>
+                  </div>
                   <table class="table table-striped" style="overflow:scroll">
                     <tr class="bg-primary">
                         <td><strong class="text-white h5">District</td></strong>
@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <!-- <a href="{{ route('viewDatadistrict') }}"> -->
-                            <div class="card bg-primary text-white" style="aspact-ratio:1; height:200px;display:flex;justify-content:center;align-items:center">
+                            <div class="card bg-primary text-white m-2" style="aspact-ratio:1; height:100px;display:flex;justify-content:center;align-items:center">
                                 <h1 class="display-5">{{ $total }}</h1>
                                 <h2>Total beneficiary</h1>
                             </div>
@@ -44,22 +44,22 @@
                         </div>
                         <div class="col-md-4">
                             <!-- <a href="{{ route('viewDatadistrict') }}"> -->
-                            <div class="card bg-success text-white" style="aspact-ratio:1; height:200px;display:flex;justify-content:center;align-items:center">
+                            <div class="card bg-success text-white m-2" style="aspact-ratio:1; height:100px;display:flex;justify-content:center;align-items:center">
                                 <h1 class="display-5">{{ $completed }}</h1>
-                                <h2>Completed</h1>
+                                <a href="/state_show_all_data" class="text-white">Completed</a>
                             </div>
                             <!-- </a> -->
                         </div>
                         <div class="col-md-4">
                             <!-- <a href="{{ route('viewDatadistrict') }}"> -->
-                            <div class="card bg-warning text-white" style="aspact-ratio:1; height:200px;display:flex;justify-content:center;align-items:center">
+                            <div class="card bg-warning text-white m-2" style="aspact-ratio:1; height:100px;display:flex;justify-content:center;align-items:center">
                                 <h1 class="display-5">{{ $pending }}</h1>
                                 <h2>Pending</h1>
                             </div>
                             <!-- </a> -->
                         </div>
                         <div class="col-md-10 my-4" style="margin:auto;">
-                            <canvas id="myChart" style="width:100%;max-height:100vh"></canvas>
+                            <canvas id="myChart" style="width:100%;max-height:50vh"></canvas>
                         </div>
                     </div>
                 </div>

@@ -90,7 +90,7 @@ class StateViewController extends Controller
                         ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
                         ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id')
                         ->join('user_images', 'beneficary_details_excel_data.id', '=', 'user_images.reg_rec_id')
-                        ->where('beneficary_details_excel_data.id', $request->id)
+                        ->where('beneficary_details_excel_data.id', $_GET['id'])
                         ->select('user_images.image_location_2 as photo2', 'user_images.image_location_1 as photo1', 'beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name',)
                         ->first();
                     $data = [];
@@ -101,7 +101,7 @@ class StateViewController extends Controller
                     $beneficiary->p1 = $a;
                     $beneficiary->p2 = $b;
                     return response()->json(['status' => 400, 'one_details' => $beneficiary]);
-                } catch (Exception $err) {
+                    } catch (Exception $err) {
                     $message = "Server error please try again !";
                 }
             } else {

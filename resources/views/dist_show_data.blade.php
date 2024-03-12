@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{{ URL::asset('css/user_data.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/media.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
     <title>User Data</title>
     <style>
         .output {
@@ -65,8 +67,6 @@
 
 @section('content')
     <div class="d-flex">
-        {{-- <form action="{{ route('viewfiltereddata') }}" method="post" class="flex_div user_upload_form py-4" id="filtergp"> --}}
-        {{-- @csrf --}}
         <div class="flex_div user_upload_form py-4" id="filtergp">
             <div class="col-4 text-center">
                 <h5 class="text-white">District Name : </h5>
@@ -91,12 +91,9 @@
             </div>
 
         </div>
-        {{-- </form> --}}
     </div>
 
-    <!-- <div class="d-flex my-2 justify-content-center">
-                                                                                                                                                                                                                                                                                                                                                                 //$beneficiaries->links() }}
-                                                                                                                                                                                                                                                                                                                                                            </div> -->
+
 
     <div class="container">
         <div class="table-responsive">
@@ -108,46 +105,15 @@
                             <thead>
                                 <tr>
                                     <td>SL No</td>
-                                    <!-- <td>Record Id</td> -->
                                     <td>Beneficiary ID</td>
                                     <td>Beneficiary Name</td>
-
                                     <td>GP</td>
                                     <td>Block</td>
-                                    <!-- <td>District</td> -->
-                                    <!-- <td>Photo 1</td>
-                                                                                                                                                                                                                                                                                                                                                                        <td>Photo 2</td> -->
                                     <td>View Details</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @php 
-            for($i=0;$i<sizeof($beneficiaries);$i++){
-            if(isset($page_id)){
-                $index = ($page_id-1) * 15 ;
-                $j = $index + $i +1;
-            }
-            else{
-                $j = $i +1;
-            }
-        @endphp
-
-            <tr>
-                <td>{{$j}}</td>
-                <!-- <td>{{$beneficiaries[$i]->record_id}}</td> -->
-                <td>{{$beneficiaries[$i]->b_id}}</td>
-                <td>{{$beneficiaries[$i]->b_name}}</td>
-
-                <td>{{$beneficiaries[$i]->gp_name}}</td>
-                <td>{{$beneficiaries[$i]->block_name}}</td>
-                <td><a href="#" onclick="uploadModal({{$beneficiaries[$i]->record_id}})"><i class="fa fa-eye"></i></a></td>
-            </tr>
-        @php
-        }
-        @endphp --}}
-
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -211,6 +177,7 @@
 @endsection
 
 @section('extrajs')
+    <script src="https:://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
     <script type="text/javascript">
         // ------------------------------------------- get all uploaded details -------------------------
         async function getAlluploadedDetails() {
@@ -226,7 +193,22 @@
                     gp_id: gp_id
                 },
                 success: function(result) {
-                    console.log(result);
+
+                    var dataTable = $('#example').DataTable();
+                    dataTable.clear().draw();
+                    if(result.status == 200){
+                        for(var i=0; i< result.all_details.length; i++){
+
+                            var icon = `<button class="btn text-primary" id="show_data" value="${result.all_details[i].record_id}"><i class="fa fa-eye"></i></button>`;
+                            dataTable.row.add([(i+1),
+                            result.all_details[i].b_id,
+                            result.all_details[i].b_name,
+                            result.all_details[i].gp_name,
+                            result.all_details[i].block_name,
+                            icon
+                        ]).draw(false);
+                        }
+                    }
                 },
                 error: function(data) {
                     console.log(data);
@@ -249,7 +231,7 @@
                         var content = '<option selected disabled>Select Block</option>';
                         for (var i = 0; i < result.blocks.length; i++) {
                             content +=
-                                `<option value="${result.blocks[i].block_id}" >${result.blocks[i].block_name}</option>`;
+                                `<option value="${result.blocks[i].block_id}">${result.blocks[i].block_name}</option>`;
                         }
                         $('#block_id').html(content);
                     } else {
@@ -311,30 +293,40 @@
         });
         $(document).on('change', '#gp_id', function() {
             getAlluploadedDetails();
-        })
+        });
 
 
+        $(document).on('click','#show_data',async function(e){
+            var id=$(this).val();
+            console.log(id);
+            await $.ajax({
+                type: "get",
+                url: "/state_view_one_data",
+                data: {
+                    id:id
+                },
+                success: function(result) {
+                    $("#b_id").html(result.one_details.b_id);
+                $("#b_name").html(result.one_details.b_name);
+                $("#block_name").html(result.one_details.block_name);
+                $("#district_name").html(result.one_details.district_name);
+                $("#gp_name").html(result.one_details.gp_name);
+                $("#record_id").html(result.one_details.record_id);
+                $("#village").html(result.one_details.village);
+                $('#photo1').attr("src", result.one_details.p1);
+                $('#photo2').attr("src", result.one_details.p2);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+            $('#modal').modal('show');
+        });
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            function uploadModal(id){
-                // fetch data from db and set on the modal
-                let options = {
         function uploadModal(id) {
             // fetch data from db and set on the modal
             let options = {

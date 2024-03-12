@@ -60,12 +60,14 @@ Route::post('user_data_oneview', [userDataController::class, 'findUserdataOnevie
 
 
 // Route::middleware([checkdistrict::class])->group(function () {
-Route::get('/viewDatadistrict', [UserDataController::class, 'showUserDatadistrict'])->name('viewDatadistrict');
-Route::post('/view_filtered_data_by_block', [userDataController::class, 'viewfilterUserdatabyBlock'])->name('viewfiltereddatabyblock')->middleware(['auth', 'verified']);
-Route::get('/state_show_all_data', [StateViewController::class, 'showAllData'])->name('showAllData'); //(DK)
-Route::get('/get-state-view', [StateViewController::class, 'viewAllUploadData']);
-Route::get('/get-blocks', [StateViewController::class, 'getBlocks']);
-Route::get('/get-gps', [StateViewController::class, 'getGps']);
+    Route::get('/viewDatadistrict', [UserDataController::class, 'showUserDatadistrict'])->name('viewDatadistrict');
+    Route::post('/view_filtered_data_by_block', [userDataController::class, 'viewfilterUserdatabyBlock'])->name('viewfiltereddatabyblock')->middleware(['auth', 'verified']);
+    Route::get('/state_show_all_data', [StateViewController::class, 'showAllData'])->name('showAllData'); //(DK)
+    Route::get('/get-state-view', [StateViewController::class, 'viewAllUploadData']);
+    Route::get('/get-blocks', [StateViewController::class, 'getBlocks']);
+    Route::get('/get-gps', [StateViewController::class, 'getGps']);
+    Route::get('/state_view_one_data', [StateViewController::class, 'viewOneUploadedData'])->name('stateViewOneData')->middleware(['auth', 'verified']);
+
 // });
 
 

@@ -438,12 +438,12 @@
 
         .dashboard:hover {
             color: rgb(255, 255, 255);
-            background-color: rgb(31, 153, 31);
+            background-color: yellowgreen;
         }
 
         .login-btn:hover {
             color: rgb(255, 255, 255);
-            background-color: rgb(31, 153, 31);
+            background-color: yellowgreen;
         }
 
         .nav {
@@ -477,8 +477,37 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgb(61, 59, 59);
+            background-color: #3A0002;
             color: white;
+        }
+        @media only screen and (min-width:320px){
+            .sign-in{
+                top: 100px;
+            }
+            .blank{
+                height: 10rem;
+            }
+            .footer-div{
+                height:200px;
+            }
+        }
+        @media only screen and (min-width:426px){
+            
+            .blank{
+                height: 60vh;
+            }
+            .footer-div{
+                height:200px;
+            }
+        }
+        @media only screen and (min-width:769px){
+            
+            .blank{
+                height: 75vh;
+            }
+            .footer-div{
+                height:100px;
+            }
         }
     </style>
 </head>
