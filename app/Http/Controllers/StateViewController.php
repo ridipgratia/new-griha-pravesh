@@ -11,6 +11,38 @@ use Illuminate\Support\Facades\Storage;
 class StateViewController extends Controller
 {
 
+    public function getBlocks(Request $request)
+    {
+        try {
+            $blocks = DB::table('blocks')
+                ->where('district_id', $_GET['district_id'])
+                ->select(
+                    'block_id',
+                    'block_name'
+                )
+                ->get();
+            return response()->json(['status' => 200, 'blocks' => $blocks]);
+        } catch (Exception $err) {
+            return response()->json(['status' => 400, 'message' => 'Server error please try again !']);
+        }
+    }
+    public function getGps(Request $request)
+    {
+        try {
+            $gps = DB::table('gp')
+                ->where('district_id', $_GET['district_id'])
+                ->where('block_id', $_GET['block_id'])
+                ->select(
+                    'gp_id',
+                    'gp_name'
+                )
+                ->get();
+            return response()->json(['status' => 200, 'gps' => $gps]);
+        } catch (Exception $err) {
+            return response()->json(['status' => 400, 'message' => 'Server error please try again !']);
+        }
+    }
+
     public function viewAllUploadData(Request $request)
     {
         if ($request->ajax()) {
@@ -22,11 +54,14 @@ class StateViewController extends Controller
                         ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
                         ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
                         ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id');
-                    if ($request->district_id) {
+                    if ($_GET['district_id']) {
                         $query->where('beneficary_details_excel_data.district_id', $request->district_id);
                     }
-                    if ($request->block_id) {
+                    if ($_GET['block_id']) {
                         $query->where('beneficary_details_excel_data.block_id', $request->block_id);
+                    }
+                    if ($_GET['gp_id']) {
+                        $query->where('beneficary_details_excel_data.gp_id', $request->gp_id);
                     }
                     $beneficary = $query->where('beneficary_details_excel_data.status', '1')
                         ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name')
