@@ -208,6 +208,25 @@ img.zoom-img {
 
     @section('extrajs')
         <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             function uploadModal(id){
                 // fetch data from db and set on the modal
                 let options = {
