@@ -298,11 +298,6 @@
                 }
             });
         }
-
-<<<<<<< HEAD
-    @section('extrajs')
-        <script type="text/javascript">
-=======
         getAlluploadedDetails();
 
         // ------------------------ clicked by district -----------------------
@@ -317,7 +312,6 @@
         $(document).on('change', '#gp_id', function() {
             getAlluploadedDetails();
         })
->>>>>>> 43106e7e8b015d7a61a2782659ebd0de901ec21d
 
 
 
@@ -334,18 +328,16 @@
 
 
 
-<<<<<<< HEAD
+
 
 
 
             function uploadModal(id){
                 // fetch data from db and set on the modal
                 let options = {
-=======
         function uploadModal(id) {
             // fetch data from db and set on the modal
             let options = {
->>>>>>> 43106e7e8b015d7a61a2782659ebd0de901ec21d
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
