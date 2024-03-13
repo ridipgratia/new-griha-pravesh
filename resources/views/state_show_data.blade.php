@@ -66,32 +66,45 @@
 @endsection
 
 @section('content')
+<form action="/state_show_all_data" method="post" id="state_view_form">
+    @csrf
     <div class="d-flex">
+        
         <div class="flex_div user_upload_form py-4" id="filtergp">
             <div class="col-4 text-center">
                 <h5 class="text-white">District Name : </h5>
-                <select name="GP_name" style="width:50%;margin-left:20px" id="district_id">
+                <select  style="width:50%;margin-left:20px" id="district_id" name="district_id">
                     <option disabled selected>Select District</option>
                     @foreach ($dist as $d)
-                        <option id="selectDist" value="{{ $d->id }}">{{ $d->name }}</option>
+                        <option id="selectDist" {{isset($district_code) && $district_code==$d->id ?  "selected" : ""}} value="{{ $d->id }}">{{ $d->name }}</option>
                     @endforeach
+                    
                 </select>
             </div>
             <div class="col-4 text-center">
                 <h5 class="text-white">Block Name : </h5>
-                <select name="GP_name" style="width:50%;margin-left:20px" id="block_id">
+                
+                <select  style="width:50%;margin-left:20px" id="block_id" name="block_id">
                     <option disabled selected>Select Block</option>
+                    
+                    @foreach ($blocks as $blk)
+                    <option id="selectBlock" {{isset($block_code) && $block_code==$blk->block_id ?  "selected" : ""}} value="{{$blk->block_id}}">{{$blk->block_name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-4 text-center">
                 <h5 class="text-white">GP Name : </h5>
-                <select name="GP_name" style="width:50%;margin-left:20px" id="gp_id">
+                <select  style="width:50%;margin-left:20px" id="gp_id" name="gp_id">
                     <option disabled selected>Select GP</option>
+                    @foreach ($gps as $gp)
+                    <option id="selectBlock" {{isset($gp_code) && $gp_code==$gp->gp_id ?  "selected" : ""}} value="{{$gp->gp_id}}">{{$gp->gp_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
         </div>
     </div>
+</form>
 
 
 
@@ -113,7 +126,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            </tbody>
+                                @php 
+                                    for($i=0;$i<sizeof($beneficiaries);$i++){
+                                    if(isset($page_id)){
+                                        $index = ($page_id-1) * 15 ;
+                                        $j = $index + $i +1;
+                                    }
+                                    else{
+                                        $j = $i +1;
+                                    }
+                                @endphp
+                        
+                                    <tr>
+                                        <td>{{$j}}</td>
+                                        <td>{{$beneficiaries[$i]->b_id}}</td>
+                                        <td>{{$beneficiaries[$i]->b_name}}</td>
+                                        <td>{{$beneficiaries[$i]->gp_name}}</td>
+                                        <td>{{$beneficiaries[$i]->block_name}}</td>
+                                        <td><a href="#" onclick="uploadModal({{$beneficiaries[$i]->record_id}})"><i class="fa fa-eye"></i></a></td>
+                                    </tr>
+                                @php
+                                }
+                                @endphp
+                                    
+                                </tbody>
                         </table>
                     </div>
                 </div>
@@ -179,6 +215,19 @@
 @section('extrajs')
     <script src="https:://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
     <script type="text/javascript">
+    $(document).on('change','#district_id',function(){
+        $('#state_view_form').submit();
+    });
+        $(document).on('change', '#block_id', function() {
+            $('#state_view_form').submit();
+        });
+        $(document).on('change', '#gp_id', function() {
+            $('#state_view_form').submit();
+        });
+
+
+
+
         // ------------------------------------------- get all uploaded details -------------------------
         async function getAlluploadedDetails() {
             var district_id = $('#district_id').val();
@@ -280,20 +329,20 @@
                 }
             });
         }
-        getAlluploadedDetails();
+        // getAlluploadedDetails();
 
         // ------------------------ clicked by district -----------------------
-        $(document).on('change', '#district_id', function() {
-            getAlluploadedDetails();
-            getBlocks();
-        });
-        $(document).on('change', '#block_id', function() {
-            getAlluploadedDetails();
-            getGps();
-        });
-        $(document).on('change', '#gp_id', function() {
-            getAlluploadedDetails();
-        });
+        // $(document).on('change', '#district_id', function() {
+        //     getAlluploadedDetails();
+        //     getBlocks();
+        // });
+        // $(document).on('change', '#block_id', function() {
+        //     getAlluploadedDetails();
+        //     getGps();
+        // });
+        // $(document).on('change', '#gp_id', function() {
+        //     getAlluploadedDetails();
+        // });
 
 
         $(document).on('click','#show_data',async function(e){

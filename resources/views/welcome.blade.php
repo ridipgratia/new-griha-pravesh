@@ -492,18 +492,22 @@
             }
         }
         @media only screen and (min-width:426px){
-            
+            .sign-in{
+                top: 60px;
+            }
             .blank{
-                height: 60vh;
+                height: 80vh;
             }
             .footer-div{
                 height:200px;
             }
         }
         @media only screen and (min-width:769px){
-            
+            .sign-in{
+                top: 60px;
+            }
             .blank{
-                height: 75vh;
+                height: 95vh;
             }
             .footer-div{
                 height:100px;

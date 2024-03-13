@@ -111,15 +111,91 @@ class StateViewController extends Controller
         }
     }
     // show all data page according to district or block or GP (DK)
-    public function showAllData()
+    public function showAllData(Request $request)
     {
 
         $dist = DB::table('districts')->get();
-        // dd($dist);
-
-        $dist_code = DB::table('districts')->select('id')->get();
-        $block_code = DB::table('blocks')->select('id')->get();
-
-        return view('dist_show_data', compact('dist'));
+        $blocks=[];
+        $gps=[];
+        // beneficiaries
+        if (Auth::user()->level == 2) {
+            try {
+                $query = DB::table('beneficary_details_excel_data')
+                    ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
+                    ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
+                    ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id');
+                if ($request->district_id) {
+                    $query->where('beneficary_details_excel_data.district_id', $request->district_id);
+                }
+                if ($request->block_id) {
+                    $query->where('beneficary_details_excel_data.block_id', $request->block_id);
+                }
+                if ($request->gp_id) {
+                    $query->where('beneficary_details_excel_data.gp_id', $request->gp_id);
+                }
+                $beneficiaries = $query->where('beneficary_details_excel_data.status', '1')
+                    ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name')
+                    ->get();
+                    return view('state_show_data', compact('dist','blocks','gps','beneficiaries'));
+                // return response()->json(['status' => 200, 'all_details' => $beneficary]);
+            } catch (Exception $err) {
+                return redirect('/dashboard');
+            }
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+    public function showAllDataFilter(Request $request){
+        $dist = DB::table('districts')->get();
+        $blocks=[];
+        $gps=[];
+        $district_code="";
+        $block_code="";
+        $gp_code="";
+        // beneficiaries
+        if (Auth::user()->level == 2) {
+            try {
+                $query = DB::table('beneficary_details_excel_data')
+                    ->join('gp_name', 'beneficary_details_excel_data.gp_id', '=', 'gp_name.id')
+                    ->join('block_name', 'beneficary_details_excel_data.block_id', '=', 'block_name.id')
+                    ->join('districts', 'beneficary_details_excel_data.district_id', '=', 'districts.id');
+                if ($request->district_id) {
+                    $district_code=$request->district_id;
+                    $query->where('beneficary_details_excel_data.district_id', $request->district_id);
+                    $blocks = DB::table('blocks')
+                    ->where('district_id', $request->district_id)
+                    ->select(
+                        'block_id',
+                        'block_name'
+                    )
+                    ->get();
+                }
+                if ($request->block_id) {
+                    $query->where('beneficary_details_excel_data.block_id', $request->block_id);
+                    $block_code=$request->block_id;
+                    $gps = DB::table('gp')
+                ->where('district_id', $request->district_id)
+                ->where('block_id', $request->block_id)
+                ->select(
+                    'gp_id',
+                    'gp_name'
+                )
+                ->get();
+                }
+                if ($request->gp_id) {
+                    $query->where('beneficary_details_excel_data.gp_id', $request->gp_id);
+                    $gp_code=$request->gp_id;
+                }
+                $beneficiaries = $query->where('beneficary_details_excel_data.status', '1')
+                    ->select('beneficary_details_excel_data.id as record_id', 'beneficary_details_excel_data.name as b_name', 'beneficary_details_excel_data.reg_no as b_id', 'beneficary_details_excel_data.lat as lat', 'beneficary_details_excel_data.lon as lon', 'gp_name.name as gp_name', 'districts.name as district_name', 'block_name.name as block_name')
+                    ->get();
+                    return view('state_show_data', compact('dist','blocks','gps','beneficiaries','district_code','block_code','gp_code'));
+                // return response()->json(['status' => 200, 'all_details' => $beneficary]);
+            } catch (Exception $err) {
+                return redirect('/dashboard');
+            }
+        } else {
+            return redirect('/dashboard');
+        }
     }
 }
