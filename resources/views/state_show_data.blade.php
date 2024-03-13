@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"> --}}
     <title>User Data</title>
     <style>
         .output {
@@ -120,8 +120,9 @@
                                     <td>SL No</td>
                                     <td>Beneficiary ID</td>
                                     <td>Beneficiary Name</td>
-                                    <td>GP</td>
+                                    <td>District</td>
                                     <td>Block</td>
+                                    <td>GP</td>
                                     <td>View Details</td>
                                 </tr>
                             </thead>
@@ -141,8 +142,9 @@
                                         <td>{{$j}}</td>
                                         <td>{{$beneficiaries[$i]->b_id}}</td>
                                         <td>{{$beneficiaries[$i]->b_name}}</td>
-                                        <td>{{$beneficiaries[$i]->gp_name}}</td>
+                                        <td>{{$beneficiaries[$i]->district_name}}</td>
                                         <td>{{$beneficiaries[$i]->block_name}}</td>
+                                        <td>{{$beneficiaries[$i]->gp_name}}</td>
                                         <td><a href="#" onclick="uploadModal({{$beneficiaries[$i]->record_id}})"><i class="fa fa-eye"></i></a></td>
                                     </tr>
                                 @php
@@ -213,7 +215,7 @@
 @endsection
 
 @section('extrajs')
-    <script src="https:://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+    {{-- <script src="https:://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script> --}}
     <script type="text/javascript">
     $(document).on('change','#district_id',function(){
         $('#state_view_form').submit();
@@ -403,7 +405,7 @@
                 $('#photo1').attr("src", json.p1);
                 $('#photo2').attr("src", json.p2);
                 // $("#photo2").src(json.photo2);
-                console.log(json);
+                // console.log(json);
                 // opening the modal
                 $('#modal').modal('show')
             })
